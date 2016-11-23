@@ -64,5 +64,5 @@ select deptno,ename employee,sal "Monthly Salary" from emp where sal>=1500 and d
 select * from emp where hiredate >= to_date('1982/01/01','yyyy/mm/dd');
 select * from emp where comm is not null;
 select ename,sal,comm 보너스 from emp where comm>sal*0.1;
-select * from emp where (job='CLERK' or job='ANALYST') AND sal not in(1000,3000,5000);
-select * from emp where ename like '%LL%' and (deptno=30 or mgr=7782);
+select * from emp where job in('CLERK','ANALYST') AND sal not in(1000,3000,5000);
+select * from emp where ename like '%L%L%' and (deptno=30 or mgr=7782);
