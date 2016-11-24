@@ -37,12 +37,17 @@ select name 이름, height 키 from student where grade=1 order by name;
 
 --[문7] professor 테이블에서 교수들의 이름을 조회하여
 -- 성 부분에 'ㅈ'과 'ㅊ'이 포함된 사람의 이름을 오름차순으로 출력
-select name from professor where name> '자' and name<'카'order by name;
+select name from professor where name> '자%' and name<'카%'order by name;
 --[문8] professor 테이블를 대상으로 '전임'만 입력하면 전임강사가
 -- 모두 검색 되도록한다(컬럼 : position)
 select * from professor where position like '%전임%';
 
 select * from professor;
+
+select * from tab; --tab: 의사테이블
+select tname from tab; -- tname: 의사 컬럼(가짜 컬럼)
+
+select tname from tab where tname='STUDENT';
 
 
 
