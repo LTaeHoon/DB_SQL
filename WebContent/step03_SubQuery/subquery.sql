@@ -53,3 +53,35 @@ select ename,sal
 from emp
 where deptno =(select deptno from dept01 where dname='SALES');
 
+-- 03.서브 쿼리에서 그룹 함수의 사용
+select round(avg(sal),3) from emp;
+select ename, sal
+from emp
+where sal > (select avg(sal) from emp);
+
+-- 04. 다중 행 서브쿼리
+--(1) IN 연산자
+select ename, sal, deptno
+from emp
+where deptno in (select distinct deptno
+from emp
+where sal>=3000);
+
+--<실습6>
+
+select deptno, dname, loc
+from dept01
+where deptno in (select distinct deptno from emp where job='MANAGER')
+order by deptno;
+
+--(2) ALL 연산자 :서브 쿼리 최대값 이상
+select ename, sal from emp where sal > all(select sal from emp where deptno =30);
+
+--<실습7>
+select ename, job, sal from emp where job !='SALESMAN' and sal > all(select sal from emp where job='SALESMAN');
+
+--(3) ANY 연산자 :서브 쿼리 최소값 이상
+select ename, sal from emp where sal >= any ( select sal from emp where deptno = 30 );
+
+--<실습8>
+select ename, job, sal from emp where job!='SALESMAN' and sal > any(select sal from emp where job='SALESMAN');
