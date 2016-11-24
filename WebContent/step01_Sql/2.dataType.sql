@@ -31,8 +31,11 @@ select * from tab;
 /*
  * sequence?
  * - 시작값을 기준으로 일정한 값이 증가하는 객체
+ * - 한번 삭제된 시퀀스 번호는 재생 불가
  * - 형식) create sequence 이름 increment by 증가값 start with 시작값;
+ * - 삭제) drop sequence 이름;
  */
+drop sequence 이름
 create sequence seq_sid increment by 1 start with 1000;
 
 -- sequence를 이용하여 학번 추가
